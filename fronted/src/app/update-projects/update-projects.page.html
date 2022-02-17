@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <form [formGroup]="updateProjectForm" (ngSubmit)="onSubmit()">
+
+      <ion-item>
+        <ion-label>Temporada</ion-label>
+        <ion-select formControlName="season_id" interface="popover" required>
+          <ion-select-option *ngFor="let seasons of Seasons" value="{{seasons.id}}">{{seasons.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="alert-danger" *ngIf="season_id.invalid && (season_id.dirty || season_id.touched)">
+        <div class="container-error-message" *ngIf="season_id.errors.required">
+          Elije un Temporada
+        </div>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Floating Label</ion-label>
+        <ion-input formControlName="name" type="text" required></ion-input>
+      </ion-item>
+      <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+        <div class="container-error-message" *ngIf="name.errors.required">
+          Elije un nombre
+        </div>
+      </div>
+
+      <ion-item>
+        <ion-input formControlName="starDate" type="date" required></ion-input>
+      </ion-item>
+      <div class="alert-danger" *ngIf="starDate.invalid && (starDate.dirty || starDate.touched)">
+        <div class="container-error-message" *ngIf="starDate.errors.required">
+          Elije un fecha
+        </div>
+      </div>
+
+      <ion-item>
+        <ion-input formControlName="endDate" type="date" required></ion-input>
+      </ion-item>
+      <div class="alert-danger" *ngIf="endDate.invalid && (endDate.dirty || endDate.touched)">
+        <div class="container-error-message" *ngIf="endDate.errors.required">
+          Elije un fecha
+        </div>
+      </div>
+
+
+
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" expand="block">Añadir</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+  </ion-list>
+</ion-content>

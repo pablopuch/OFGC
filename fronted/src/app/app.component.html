@@ -1,0 +1,46 @@
+<ion-app>
+  <ion-menu side="start" menuId="first" contentId="main">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>OFGC</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-menu-toggle>
+
+      <ion-item routerLink="/projects">
+        <ion-icon name="albums-outline" slot="start" ></ion-icon>
+        <ion-label>Projectos</ion-label>
+      </ion-item>
+
+      <ion-item routerLink="/list">
+        <ion-icon name="calendar" slot="start"></ion-icon>
+        <ion-label>Calendario-Total</ion-label>
+      </ion-item>
+
+      <ion-item routerLink="/chat">
+        <ion-icon name="chatbubble-outline" slot="start"></ion-icon>
+        <ion-label>Chat</ion-label>
+      </ion-item>
+
+      <ion-item (click)="getPdf()">
+        <ion-icon name="document-attach-outline" slot="start"></ion-icon>
+        <ion-label>PDF</ion-label>
+      </ion-item>
+
+      <ion-item (click)="help()">
+        <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+        <ion-label>Ayuda</ion-label>
+      </ion-item>
+
+      <ion-item (click)="logout()">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        <ion-label>Salir</ion-label>
+      </ion-item>
+
+    </ion-menu-toggle>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary" menu="first"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Calendario-Total</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> 
+
+  <ion-card *ngFor="let shedules of Shedules">
+    <ion-card-header>
+      <ion-card-subtitle>{{shedules.project.name}}</ion-card-subtitle>
+      <ion-card-title>{{shedules.typeshedule.name}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      
+      <p><b>Sala: </b>{{shedules.room.name}}</p>
+      <p><b>Fecha: </b>{{formatDate(shedules.date)}}</p>
+      <p><b>Hora: </b>{{shedules.hour_range}}</p>
+      <p><b>Nota: </b>{{shedules.note}}</p>
+        <br>
+
+        <div class="item-note" item-end>
+          <button ion-button clear [routerLink]="['/update/', shedules.id]">
+            <ion-icon name="create" style="zoom:1.5"></ion-icon>
+          </button>
+          
+          <button ion-button clear (click)="removeShedule(shedules)">
+            <ion-icon name="trash" style="zoom:1.5"></ion-icon>
+          </button>
+        </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" routerLink="/create">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+
+
+

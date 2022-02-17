@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary" menu="first"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Proyectos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let projects of Projects">
+      <ion-card-header>
+        <ion-card-title>{{projects.name}}</ion-card-title>
+        <p>{{projects.season.name}}</p>
+      </ion-card-header>
+    <ion-card-content>
+
+      <p><b>Fecha Inicio: </b>{{formatDate(projects.starDate)}}</p>
+      <p><b>Fecha Fin: </b>{{formatDate(projects.endDate)}}</p>
+      <br>
+
+      <div class="item-note" item-end>
+        <button ion-button clear [routerLink]="['/update-projects/', projects.id]">
+            <ion-icon name="create" style="zoom:1.5"></ion-icon>
+          </button>
+
+        <button ion-button clear (click)="removeProject(projects)">
+          <ion-icon name="trash" style="zoom:1.5"></ion-icon>
+        </button>
+
+        <button ion-button clear routerLink="/calendar/{{projects.id}}">
+          <ion-icon name="calendar-outline" style="zoom:1.5"></ion-icon>
+        </button>
+
+        <button ion-button clear routerLink="/director/{{projects.id}}">
+          <ion-icon name="people-circle-outline" style="zoom:1.5"></ion-icon>
+        </button>
+
+        <button ion-button clear>
+          <ion-icon name="musical-note-outline" style="zoom:1.5"></ion-icon>
+        </button>
+      </div>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" routerLink="/create-projects">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

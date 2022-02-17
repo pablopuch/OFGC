@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <form [formGroup]="sheduleForm" (ngSubmit)="onSubmit()">
+
+      <ion-item>
+        <ion-label>Projecto</ion-label>
+        <ion-select formControlName="project_id" interface="popover" required>
+          <ion-select-option *ngFor="let projects of Projects" value="{{projects.id}}">{{projects.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <div class="alert-danger" *ngIf="project_id.invalid && (project_id.dirty || project_id.touched)">
+        <div class="container-error-message" *ngIf="project_id.errors.required">
+          Elije un projecto
+        </div>
+      </div>
+
+
+
+
+      <ion-item>
+        <ion-label>Tipo</ion-label>
+        <ion-select formControlName="type_id" interface="popover" required>
+          <ion-select-option *ngFor="let typeshedules of Typeshedules" value="{{typeshedules.id}}">{{typeshedules.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <div class="alert-danger" *ngIf="type_id.invalid && (type_id.dirty || type_id.touched)">
+        <div class="container-error-message" *ngIf="type_id.errors.required">
+          Elije un tipo
+        </div>
+      </div>
+
+
+
+
+      <ion-item>
+        <ion-label>Sala</ion-label>
+        <ion-select formControlName="room_id" interface="popover" required>
+          <ion-select-option *ngFor="let rooms of Rooms" value="{{rooms.id}}">{{rooms.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <div class="alert-danger" *ngIf="room_id.invalid && (room_id.dirty || room_id.touched)">
+        <div class="container-error-message" *ngIf="room_id.errors.required">
+          Elije una sala
+        </div>
+      </div>
+
+
+
+      <ion-item>
+        <ion-input formControlName="date" type="date" required></ion-input>
+      </ion-item>
+
+      <div class="alert-danger" *ngIf="date.invalid && (date.dirty || date.touched)">
+        <div class="container-error-message" *ngIf="date.errors.required">
+          Falta una fecha
+        </div>
+      </div>
+
+
+      <ion-item>
+        <ion-input formControlName="hour_range" type="time" required>
+        </ion-input>
+      </ion-item>
+
+      <div class="alert-danger" *ngIf="hour_range.invalid && (hour_range.dirty || hour_range.touched)">
+        <div class="container-error-message" *ngIf="hour_range.errors.required">
+          Falta la hora
+        </div>
+      </div>
+
+
+
+      <ion-item>
+        <ion-label position="stacked">Nota</ion-label>
+        <ion-textarea formControlName="note" required></ion-textarea>
+      </ion-item>
+
+      <div class="alert-danger" *ngIf="note.invalid && (note.dirty || note.touched)">
+        <div class="container-error-message" *ngIf="note.errors.required">
+          Falta una nota
+        </div>
+      </div>
+
+
+
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" expand="block">Añadir</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+
+  </ion-list>
+</ion-content>

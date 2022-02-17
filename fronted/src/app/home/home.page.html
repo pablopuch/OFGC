@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      client chat
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-input [(ngModel)]="msg" 
+          style="border-color: #222;border-style: solid;
+          border-width: thin" placeholder="Enter text"></ion-input>
+        </ion-col>
+      </ion-row><br />
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col><ion-button (click)="sendToserver()">send</ion-button></ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+  </ion-grid><br />
+  <ion-text *ngFor="let m of messages">
+     <h3 style="text-align: left;">{{m}}</h3>
+  </ion-text>
+
+
+
+
+
+
+
+
+
+
+</ion-content>

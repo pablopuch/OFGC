@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Directores y Solistas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <h1>DIRECTORES</h1>
+  <ion-card *ngFor="let Directorproject of directorproject">
+
+    <ion-card-header>
+      <ion-card-title>{{Directorproject.director.titleDirector}} {{Directorproject.director.name}}</ion-card-title>
+    </ion-card-header>
+
+  </ion-card>
+
+  <h1>SOLISTAS</h1>
+  <ion-card *ngFor="let Soloistproject of soloistproject">
+
+    <ion-card-header>
+      <ion-card-title>{{Soloistproject.soloist.titleSoloist}} {{Soloistproject.soloist.name}}</ion-card-title>      
+    </ion-card-header>
+
+  </ion-card>
+
+</ion-content>

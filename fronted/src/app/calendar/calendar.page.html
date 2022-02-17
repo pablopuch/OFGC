@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Calendario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let shedule of shedules">
+
+    <ion-card-header>
+      <ion-card-subtitle>{{shedule.project.name}}</ion-card-subtitle>
+      <ion-card-title>{{shedule.typeshedule.name}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+        <p><b>Sala: </b>{{shedule.room.name}}</p>
+        <p><b>Fecha: </b>{{shedule.date}}</p>
+        <p><b>Hora: </b>{{shedule.hour_range}}</p>
+        <p><b>Nota: </b>{{shedule.note}}</p>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>
