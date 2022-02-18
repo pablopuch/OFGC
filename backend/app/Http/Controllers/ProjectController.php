@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\PseudoTypes\True_;
 
 /**
  * Class ProjectController
@@ -61,6 +62,12 @@ class ProjectController extends Controller
     public function show(Request $request)
     {
         $project = Project::find($request->id);
+        return $project;
+   
+    }
+
+    public function public(Request $request){
+        $project = Project::where('published', '=',$request->published)->get();
         return $project;
     }
 

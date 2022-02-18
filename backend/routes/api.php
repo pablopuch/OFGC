@@ -29,6 +29,7 @@ Route::group([
 
     Route::get('/projects', [App\Http\Controllers\ProjectController::class, 'index']);
     Route::get('/projects/{id}', [App\Http\Controllers\ProjectController::class, 'show']);
+    Route::get('/project/{published}', [App\Http\Controllers\ProjectController::class, 'public']);
     Route::post('/projects', [App\Http\Controllers\ProjectController::class, 'store']);
     Route::put('/projects/{id}', [App\Http\Controllers\ProjectController::class, 'update']);
     Route::delete('/projects/{id}', [App\Http\Controllers\ProjectController::class, 'destroy']);
