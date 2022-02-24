@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { AuthService } from '../auth/auth.service';
 import { SoketService } from '../services/soket.service';
@@ -8,27 +8,35 @@ import { SoketService } from '../services/soket.service';
   templateUrl: './chat.page.html',
   styleUrls: ['./chat.page.scss'],
 })
+
 export class ChatPage implements OnInit {
 
   user = this.authService.username;
   mensajes = [];
   texto = "";
-  @ViewChild('scroll', { static: true }) scroll: any;
 
   constructor(
-    private soket: SoketService, 
-    private toastCtrl: ToastController, 
-    private authService:AuthService,
-    ) { }
+    private soket: SoketService,
+    private toastCtrl: ToastController,
+    private authService: AuthService,
+  ) { }
 
   ngOnInit() {
-    this.mensajes.length==0?
-    this.soket.io.on("mensaje", (mensaje) => {
-      if(mensaje) 
-        this.mensajes.push(mensaje), this.ngOnInit();
-    }):null;
+    this.mensajes.length == 0 ?
+      this.soket.io.on("mensaje", (mensaje) => {
+        if (mensaje)
+          this.mensajes.push(mensaje), this.ngOnInit(),setTimeout(() => {
+            let mainContainer:any = document.querySelector("#content");
 
-    this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight;
+            mainContainer.scrollToBottom(50);
+          }, 100); ;
+      }) : null;
+
+    setTimeout(() => {
+      let mainContainer:any = document.querySelector("#content");
+      mainContainer.scrollToBottom(200)
+    }, 200);
+
   }
 
   async showToast(msg) {
@@ -40,15 +48,16 @@ export class ChatPage implements OnInit {
     toast.present();
   }
 
-  enviarMensaje() {  
+  enviarMensaje() {
     const mensaje = {
       texto: this.texto,
       time: new Date(),
       user: this.user,
     }
-    this.soket.io.emit("send",mensaje);
-    this.texto="";
+    if (mensaje.texto != "") {
+      this.soket.io.emit("send", mensaje);
+    }
+    this.texto = "";
   }
 
- 
 }

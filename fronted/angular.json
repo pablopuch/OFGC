@@ -98,7 +98,9 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "styles": [],
-            "scripts": [],
+            "scripts": [
+              "src/assets/pusher/pusher.min.js"
+            ],
             "assets": [
               {
                 "glob": "favicon.ico",

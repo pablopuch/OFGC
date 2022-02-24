@@ -120,5 +120,9 @@ class DirectorController extends Controller
 
         return $pdf->download('Director.pdf');
     }
+
+    public function pablo(){
+        error_log("pablo también está aquí");
+    }
     
 }

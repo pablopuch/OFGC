@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Events\hello;
+
   
-use App\Http\Controllers\PDFController;
 
 
 /*
@@ -108,3 +108,5 @@ Route::group([
     Route::post('me', [App\Http\Controllers\AuthController::class, 'me']);
     Route::post('register', [App\Http\Controllers\AuthController::class, 'register']);
 });
+
+Route::get('/tiburcio', [App\Http\Controllers\DirectorController::class, 'pablo']);
