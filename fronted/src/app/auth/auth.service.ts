@@ -24,7 +24,6 @@ username:string;
 
         if (res.user) {
           this.authSubject.next(true);
-
         }
       })
     );
@@ -43,12 +42,10 @@ username:string;
     );
   }
 
-
   async logout() {
     this.authSubject.next(false);
   }
 
-  
   isLoggedIn() {
     return this.authSubject.asObservable();
   }
