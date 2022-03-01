@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Shedule } from '../models/shedule';
 import { ShedulesService } from '../services/shedules.service';
+import * as moment from 'moment';
+import { Time } from '@angular/common';
+
 
 @Component({
   selector: 'app-calendar',
@@ -30,4 +33,9 @@ export class CalendarPage implements OnInit {
       (error)=>{return console.log(error)}
     )
   }
+
+  formatDate(date: Date) {
+    return moment(date).format("DD-MM-YYYY");
+  }
+
 }

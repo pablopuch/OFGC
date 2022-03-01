@@ -16,7 +16,6 @@ username:string;
 
   constructor(
     private  httpClient:  HttpClient,
-    
     ) { }
 
   register(user: User): Observable<AuthResponse> {

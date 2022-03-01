@@ -14,29 +14,29 @@ export class AppComponent implements OnInit {
   constructor(private storage: Storage, private pdfService: PdfService, private authService: AuthService, private router: Router) { }
 
   async ngOnInit() {
-    // If using a custom driver:
-    // await this.storage.defineDriver(MyCustomDriver)
+
+    // console.log('implementando el init');
+    // this.websockets();
     await this.storage.create();
-    console.log('implementando el init');
-    this.websockets();
+    
   }
 
-  websockets() {
-    const echo = new Echo({
-      broadcaster: 'pusher',
-      cluster: 'mt1',
-      key: 'local',
-      wsHost: window.location.hostname,
-      wsPort: 6001,
-      disableStats: true,
-      enabledTransports: ['ws']
-    });
+  // websockets() {
+  //   const echo = new Echo({
+  //     broadcaster: 'pusher',
+  //     cluster: 'mt1',
+  //     key: 'local',
+  //     wsHost: window.location.hostname,
+  //     wsPort: 6001,
+  //     disableStats: true,
+  //     enabledTransports: ['ws']
+  //   });
 
-    echo.channel('channel-message').listen('hello', (resp) => {
-      console.log(resp);
+  //   echo.channel('home').listen('NewMessage', (resp) => {
+  //     console.log(resp);
 
-    });
-  }
+  //   });
+  // }
 
 
   getPdf() {
