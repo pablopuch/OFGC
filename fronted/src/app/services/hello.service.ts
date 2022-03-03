@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Echo} from 'laravel-echo-ionic';
 
+
 @Component({
     selector: 'page-hello-ionic',
     templateUrl: 'hello-ionic.html'

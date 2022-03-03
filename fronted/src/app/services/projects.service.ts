@@ -12,6 +12,8 @@ import { Storage } from '@ionic/storage';
 
 export class ProjectsService {
 
+  Project = []; 
+
   token="";
   httpOptions = {
     headers: new HttpHeaders({
@@ -27,14 +29,14 @@ export class ProjectsService {
 
   endpoint: string = "http://localhost:8000/api/projects";
 
-  constructor(private httpClient: HttpClient, private storage: Storage) {
-    this.storage.create()
-    this.storage.get("token").then((token) => {
-      this.httpOptions.headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      });
-    })
+  constructor(private httpClient: HttpClient) {
+    // this.storage.create()
+    // this.storage.get("token").then((token) => {
+    //   this.httpOptions.headers = new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //     'Authorization': `Bearer ${token}`
+    //   });
+    // })
   }
 
   getProjects(): Observable<Project[]> {
