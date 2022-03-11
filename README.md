@@ -172,6 +172,14 @@ Generate a new application key
 
     php artisan key:generate
 
+Generate a new application key
+
+    php artisan jwt:secret
+    
+Clear cache
+
+    php artisan config:clear
+    
 Run the database migrations (**Set the database connection in .env before migrating**)
 
     php artisan migrate
